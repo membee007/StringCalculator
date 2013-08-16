@@ -5,3 +5,10 @@ c:\users\michael\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrar
 c:\users\michael\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
 c:\users\michael\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 c:\users\michael\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\VisualStudio\Projects\StringCalculatorForPizza\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\VisualStudio\Projects\StringCalculatorForPizza\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\VisualStudio\Projects\StringCalculatorForPizza\ClassLibrary1\bin\Debug\nunit.framework.dll
+C:\VisualStudio\Projects\StringCalculatorForPizza\ClassLibrary1\bin\Debug\nunit.framework.xml
+C:\VisualStudio\Projects\StringCalculatorForPizza\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+C:\VisualStudio\Projects\StringCalculatorForPizza\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\VisualStudio\Projects\StringCalculatorForPizza\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
