@@ -17,73 +17,69 @@ namespace ClassLibrary1
         }
 
         [Test]
-        public void GivenemptyshouldreturnZero()
+        public void GivenEmptyshouldReturnZero()
         {
-            Assert.That(_sut.Add(string.Empty),Is.EqualTo(0));
+            Assert.That(_sut.Add(""),Is.EqualTo(0));
         }
-        [Test]
-        public void GivenNumberShouldReturnTheNumber()
+        [TestCase("1",1)]
+        [TestCase("100",100)]
+        public void GivennumberShouldReturnThatNumber(string input, int expected)
         {
-            Assert.That(_sut.Add("1"),Is.EqualTo(1));
+            Assert.That(_sut.Add(input),Is.EqualTo(expected));
         }
+    
         [Test]
-        public void GivenNumbersShouldAddThem()
+        public void GiventwonumbersShouldAddThem()
         {
             Assert.That(_sut.Add("1,2"),Is.EqualTo(3));
         }
-
     
         [Test]
-        public void AllowNewLineAsdelim()
+        public void AllowNewLineAsDelimiter()
         {
             Assert.That(_sut.Add("1\n2,3"),Is.EqualTo(6));
         }
     
         [Test]
-        public void AllowcustomDelims()
+        public void AllowCustomDelimiters()
         {
-            Assert.That(_sut.Add("//;\n1;2"), Is.EqualTo(3));
+            Assert.That(_sut.Add("//;\n1;2"),Is.EqualTo(3));
         }
 
-        [TestCase("Negatives not allowed: -1","-1,2")]
-        [TestCase("Negatives not allowed: -4,-5","2,-4,3,-5")]
-        public void NegativeShouldthrowException(string message, string input)
+        [TestCase("Negativen numbers not allowed: -1","-1,2")]
+        [TestCase("Negativen numbers not allowed: -4,-5","2,-4,3,-5")]
+        public void NegativeNumbersShouldThrowException(string msg, string input)
         {
-            Assert.Throws(Is.TypeOf<NegativeNumberException>().And.Message.EqualTo(message),()=>_sut.Add(input));
+            Assert.Throws(Is.TypeOf<NegativeNumberException>().And.Message.EqualTo(msg),
+                          () => _sut.Add(input));
+        }
+    
+        [Test]
+        public void AllowMultipleLengthDelimiters()
+        {
+            Assert.That(_sut.Add("//[***]\n1***2"),Is.EqualTo(3));
         }
         
   [Test]
-  public void NumbersgreaterthanThousandShouldBeIgnored()
+  public void AllowMultipleDelimiters()
   {
-		Assert.That(_sut.Add("1001,2"),Is.EqualTo(2));
+		Assert.That(_sut.Add("//[@][#][$]\n1@2#3$4"),Is.EqualTo(10));
   }
- 
-    
   [Test]
-  public void AnyLengthDelims()
+  public void AllowMultipleDelimitersofanyLength()
   {
-      Assert.That(_sut.Add("//[***]\n1***2***3"), Is.EqualTo(6));
+      Assert.That(_sut.Add("//[@@][#][$$$]\n1@@2#3$$$4"), Is.EqualTo(10));
   }
 
-  [Test]
-  public void AllowMultipledelims()
-  {
-      Assert.That(_sut.Add("//[*][%]\n1*2%3"), Is.EqualTo(6));
-  }
-
-  [Test]
-  public void AllowMultipledelimsanylength()
-  {
-      Assert.That(_sut.Add("//[**][%%%]\n1**2%%%3"), Is.EqualTo(6));
-  }
     }
 
     public class NegativeNumberException:Exception
     {
         public NegativeNumberException(string error)
-            :base(error){
-        
-            }
+            : base(error)
+        {
+
+        }
     }
 
     public class StringCalculator
@@ -91,30 +87,35 @@ namespace ClassLibrary1
         public int Add(string val)
         {if(string.IsNullOrEmpty(val))
             return 0;
-            var delimis = new List<string> {",", "\n"};
+            var numbers = getNumbers(val);
+            CheckForNegatives(numbers);
+            return numbers.Select(int.Parse).Sum();
+        }
+
+        private IEnumerable<string> getNumbers(string val)
+        {
+            var delimiters = new List<string> {",", "\n"};
             if (val.StartsWith("//["))
             {
-                var dels = val.Substring(3, val.IndexOf("]\n") - 3)
-                              .Split(new[] {"]["}, StringSplitOptions.RemoveEmptyEntries);
-                delimis.AddRange(dels);
-                val = val.Substring(val.IndexOf('\n') + 1);
+                var delims = val.Substring(3, val.IndexOf("]\n", StringComparison.Ordinal) - 3)
+                                .Split(new[] {"]["}, StringSplitOptions.RemoveEmptyEntries);
+                delimiters.AddRange(delims);
+                val = val.Substring(val.IndexOf("]\n", StringComparison.Ordinal) + 2);
             }
             else if (val.StartsWith("//"))
             {
-                delimis.Add(val[2].ToString());
+                delimiters.Add(val[2].ToString());
                 val = val.Substring(val.IndexOf('\n') + 1);
             }
-            var numbers = val.Split(delimis.ToArray(),StringSplitOptions.None);
-            checkForNegatives(numbers);
-            return numbers.Select(int.Parse).Where(x=>x<=1000).Sum();
+            var numbers = val.Split(delimiters.ToArray(), StringSplitOptions.None);
+            return numbers;
         }
 
-        private void checkForNegatives(IEnumerable<string> numbers)
+        private void CheckForNegatives(IEnumerable<string> numbers)
         {
             var negs = numbers.Select(int.Parse).Where(x => x < 0);
             if(!negs.Any())return;
-            const string error = "Negatives not allowed: {0}";
-            throw new NegativeNumberException(string.Format(error,string.Join(",",negs)));
+            throw  new NegativeNumberException(string.Format("Negativen numbers not allowed: {0}",string.Join(",",negs)));
         }
     }
 }
