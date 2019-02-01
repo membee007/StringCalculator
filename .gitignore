@@ -1,0 +1,33 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ClassLibrary1/obj/
+/ClassLibrary1.v11.suo
+ClassLibrary1.v11.suo.orig
+ClassLibrary1/bin/
+*.db
+*.suo
+*.orig
+ClassLibrary1/.gitignore
+*.sbr
+*.sdf
+*.dbmdl
+*.mdf
+*.ldf
+*.jfm
+*.Database.dbmdl
+ipch/
+obj
+bin
+packages
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+.vs
+ClassLibrary1.sln.DotSettings.user
+ClassLibrary1/Properties/PublishProfiles/solarafrica - FTP.pubxml.user
+ClassLibrary1/Properties/PublishProfiles/solarafrica - Web Deploy.pubxml.user

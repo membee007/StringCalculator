@@ -5,3 +5,13 @@ c:\users\michael\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrar
 c:\users\michael\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
 c:\users\michael\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 c:\users\michael\documents\visual studio 2012\Projects\ClassLibrary1\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Brownbag\StringCalculator\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Brownbag\StringCalculator\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Brownbag\StringCalculator\ClassLibrary1\bin\Debug\nunit.framework.dll
+C:\Brownbag\StringCalculator\ClassLibrary1\bin\Debug\nunit.framework.pdb
+C:\Brownbag\StringCalculator\ClassLibrary1\bin\Debug\nunit.framework.xml
+C:\Brownbag\StringCalculator\ClassLibrary1\obj\Debug\ClassLibrary1.csprojAssemblyReference.cache
+C:\Brownbag\StringCalculator\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.CoreCompileInputs.cache
+C:\Brownbag\StringCalculator\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.CopyComplete
+C:\Brownbag\StringCalculator\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Brownbag\StringCalculator\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
